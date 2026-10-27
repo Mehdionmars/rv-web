@@ -1,69 +1,44 @@
 import Link from "next/link";
+import LocaleSwitcher from "./LocaleSwitcher";
+import type { Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
 
-const NAV = [
-  { href: "/catalogue", label: "CATALOGUE" },
-  { href: "/metiers", label: "MÉTIERS" },
-  { href: "/sur-mesure", label: "SUR-MESURE" },
-  { href: "/atelier", label: "ATELIER" },
-];
+/**
+ * Black "signalétique" bar. `overlay` floats it over the home hero video;
+ * every other page gets a solid sticky bar. `quote="text"` is used on the
+ * contact page itself, where a link back to the current page makes no sense.
+ */
+export default function SiteHeader({
+  locale,
+  quote = "link",
+  quoteHref,
+  overlay = false,
+}: {
+  locale: Locale;
+  quote?: "link" | "text";
+  quoteHref?: string;
+  overlay?: boolean;
+}) {
+  const t = getMessages(locale);
 
-export default function SiteHeader({ active }: { active?: string }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        flexWrap: "wrap",
-        gap: 18,
-        padding: "20px clamp(20px,3.2vw,40px)",
-        borderBottom: "1px solid rgba(26,23,20,.16)",
-      }}
-    >
-      <Link
-        href="/"
-        style={{
-          fontFamily: "var(--font-display)",
-          fontWeight: 800,
-          fontSize: 20,
-          letterSpacing: "-.02em",
-        }}
-      >
-        rougevif<span style={{ color: "#E2001A" }}>.</span>
+    <header className={overlay ? "v3-top v3-top--overlay" : "v3-top"}>
+      <Link href={`/${locale}`} className="v3-mark" aria-label="Rougevif">
+        ROUGEVIF
       </Link>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "4px 22px",
-          font: "italic 700 10.5px/1 var(--font-body)",
-          letterSpacing: ".2em",
-          margin: "-11px 0",
-          whiteSpace: "nowrap",
-        }}
-      >
-        {NAV.map((n) => (
-          <Link
-            key={n.href}
-            href={n.href}
-            className="rv-link"
-            style={{
-              padding: "11px 0",
-              display: "inline-block",
-              color: active === n.href ? "#E2001A" : undefined,
-            }}
-          >
-            {n.label}
+
+      <div className="v3-top__end">
+        <LocaleSwitcher current={locale} switchLabel={t.nav.switchTo} />
+        {quote === "link" ? (
+          <Link className="v3-btn" href={quoteHref ?? `/${locale}/contact`}>
+            {t.nav.quote}
           </Link>
-        ))}
+        ) : (
+          <span className="v3-btn" aria-current="page">
+            {t.nav.quote}
+          </span>
+        )}
       </div>
-      <Link
-        href="/contact"
-        className="rv-btn rv-btn-dark"
-        style={{ padding: "13px 24px" }}
-      >
-        DEVIS EN 48 H
-      </Link>
-    </div>
+    </header>
   );
 }
