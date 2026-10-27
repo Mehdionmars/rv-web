@@ -1,0 +1,551 @@
+/* Rougevif — shared design tokens and site chrome.
+   Implemented from the Claude Design canvas (Rougevif Site.dc.html family). */
+
+:root{
+  --rv-sand:#F3EEE4;
+  --rv-cream:#FFFFFF;
+  --rv-ink:#0E0D0B;
+  --rv-red:#E2001A;
+  --rv-red-deep:#E2001A;
+
+  --rv-rule:rgba(26,23,20,.16);
+  --rv-rule-strong:rgba(26,23,20,.24);
+  --rv-muted:rgba(26,23,20,.62);
+  --rv-muted-soft:rgba(26,23,20,.66);
+
+  --rv-body:var(--font-plex),'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --rv-display:var(--rv-body);
+
+  --rv-gutter:clamp(20px,3.2vw,40px);
+}
+
+*,*::before,*::after{box-sizing:border-box;min-width:0}
+
+/* Single face, single weight: IBM Plex Sans Regular everywhere. Overrides
+   the bold/italic weights set on headings, <b>, <strong>, etc., and stops
+   the browser from faking bold or italic. */
+*,*::before,*::after{font-weight:400 !important;font-style:normal !important;font-synthesis:none}
+
+/* Components below set display:flex/grid, which outranks the user-agent
+   [hidden]{display:none} rule. Without this, hiding anything via the hidden
+   attribute silently does nothing. */
+[hidden]{display:none !important}
+
+html{-webkit-text-size-adjust:100%}
+
+body{
+  margin:0;
+  background:var(--rv-sand);
+  color:var(--rv-ink);
+  font-family:var(--rv-body);
+  letter-spacing:.005em;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+}
+
+img{max-width:100%;display:block}
+
+a{color:inherit;text-decoration:none}
+
+:focus-visible{outline:2px solid var(--rv-red);outline-offset:3px}
+
+.rv-skip{
+  position:absolute;left:var(--rv-gutter);top:-100%;z-index:100;
+  background:var(--rv-ink);color:var(--rv-cream);
+  padding:12px 20px;
+  font:italic 800 10.5px/1 var(--rv-body);letter-spacing:.2em;
+  transition:top .2s;
+}
+.rv-skip:focus{top:12px}
+
+/* --------------------------------------------------------------- buttons */
+
+.rv-btn{
+  display:inline-block;
+  padding:14px 22px;
+  font:400 14px/1 var(--rv-body);letter-spacing:.06em;text-transform:uppercase;
+  white-space:nowrap;
+  border:none;cursor:pointer;
+  transition:background-color .25s,color .25s;
+}
+.rv-btn--ink{background:var(--rv-ink);color:var(--rv-sand)}
+.rv-btn--ink:hover,.rv-btn--ink:focus-visible{background:var(--rv-red);color:var(--rv-cream)}
+
+.rv-btn--red{background:var(--rv-red);color:var(--rv-cream);padding:17px 32px}
+.rv-btn--red:hover,.rv-btn--red:focus-visible{background:var(--rv-ink);color:var(--rv-cream)}
+
+/* ------------------------------------------------------------- typography */
+
+.rv-eyebrow{
+  font:italic 800 11.5px/1 var(--rv-body);letter-spacing:.2em;
+  color:var(--rv-red-deep);
+  margin:0;
+}
+
+.rv-title{
+  font-family:var(--rv-display);font-weight:800;
+  font-size:clamp(44px,8vw,128px);line-height:.92;letter-spacing:-.01em;
+  text-transform:uppercase;
+  margin:18px 0 0;
+  max-width:none;
+}
+
+.rv-lede{
+  font:500 14px/1.65 var(--rv-body);
+  color:var(--rv-muted);
+  max-width:540px;
+  margin:18px 0 0;
+}
+
+/* ------------------------------------------------------------ page intro */
+
+.rv-intro{
+  padding:clamp(40px,5vw,72px) var(--rv-gutter) clamp(24px,3vw,40px);
+}
+
+/* ------------------------------------------------------- métier sections */
+
+.rv-metiers{margin:0;padding:0;list-style:none}
+
+.rv-metier{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:clamp(20px,3vw,44px);
+  align-items:center;
+  padding:clamp(24px,3vw,40px) var(--rv-gutter);
+  border-top:1px solid var(--rv-rule);
+}
+
+.rv-metier__figure{
+  margin:0;
+  height:clamp(230px,26vw,340px);
+  padding:clamp(16px,2vw,28px);
+}
+.rv-metier__figure img{
+  width:100%;height:100%;
+  object-fit:contain;
+  /* Product shots are photographed on white — multiply drops the paper
+     out against the sand background, matching the canvas treatment. */
+  mix-blend-mode:multiply;
+}
+
+/* The canvas alternates image left / image right. Only do that once the row
+   is genuinely two columns — stacked, the photo always leads. */
+@media (min-width:680px){
+  .rv-metier:nth-child(even) .rv-metier__figure{order:2}
+}
+
+.rv-metier__count{
+  font:italic 800 10px/1 var(--rv-body);letter-spacing:.2em;
+  color:var(--rv-red-deep);
+  margin:0;
+}
+
+.rv-metier__name{
+  font-family:var(--rv-display);font-weight:800;
+  font-size:clamp(26px,3.4vw,44px);line-height:.95;letter-spacing:-.01em;
+  text-transform:uppercase;
+  margin:14px 0 0;
+}
+
+.rv-metier__text{
+  font:500 14px/1.65 var(--rv-body);
+  color:var(--rv-muted-soft);
+  max-width:460px;
+  margin:16px 0 0;
+}
+
+.rv-chips{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin:20px 0 0;padding:0;list-style:none;
+}
+.rv-chip{
+  display:inline-block;
+  border:1px solid var(--rv-rule-strong);
+  padding:9px 13px;
+  font:italic 600 10px/1 var(--rv-body);letter-spacing:.12em;
+  transition:border-color .22s,background-color .22s,color .22s;
+}
+.rv-chip:hover,.rv-chip:focus-visible{
+  border-color:var(--rv-ink);
+  background:var(--rv-cream);
+  color:var(--rv-ink);
+}
+
+/* ------------------------------------------------------------- CTA band */
+
+.rv-band{
+  background:var(--rv-ink);color:var(--rv-sand);
+  padding:clamp(44px,6vw,70px) var(--rv-gutter);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:30px;
+}
+.rv-band__title{
+  font-family:var(--rv-display);font-weight:800;
+  font-size:clamp(28px,4.2vw,54px);line-height:.95;letter-spacing:-.01em;
+  text-transform:uppercase;
+  max-width:620px;
+  margin:0;
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important}
+}
+
+/* ================================================================
+   Shared blocks used across catalogue / pièce / sur-mesure /
+   atelier / contact / accueil.
+   ================================================================ */
+
+/* ------------------------------------------------------- utilities */
+
+.rv-visually-hidden{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+
+.rv-section{padding:clamp(40px,5vw,72px) var(--rv-gutter)}
+.rv-section--tight{padding-bottom:clamp(20px,2.4vw,30px)}
+.rv-section--ruled{border-top:1px solid var(--rv-rule)}
+
+.rv-btn--ghost{
+  border:1px solid rgba(26,23,20,.3);background:transparent;color:var(--rv-ink);
+  padding:16px 30px;
+}
+.rv-btn--ghost:hover,.rv-btn--ghost:focus-visible{border-color:var(--rv-ink);background:var(--rv-cream)}
+
+.rv-btn--red-ink:hover,.rv-btn--red-ink:focus-visible{background:var(--rv-ink);color:var(--rv-cream)}
+
+.rv-actions{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 0}
+
+/* ------------------------------------------------------ breadcrumb */
+
+.rv-crumbs{
+  padding:18px var(--rv-gutter);
+  font:italic 600 10px/1.5 var(--rv-body);letter-spacing:.16em;
+  color:rgba(26,23,20,.5);
+  margin:0;
+}
+.rv-crumbs a:hover{color:var(--rv-red)}
+
+/* ------------------------------------------------- filter controls */
+
+.rv-filters{display:flex;flex-wrap:wrap;gap:8px;margin:30px 0 0;padding:0;list-style:none}
+.rv-filter{
+  display:inline-block;
+  background:transparent;color:var(--rv-ink);
+  border:1px solid rgba(26,23,20,.28);
+  padding:13px 22px;
+  font:italic 800 10.5px/1 var(--rv-body);letter-spacing:.18em;
+  cursor:pointer;
+  transition:border-color .22s,background-color .22s,color .22s;
+}
+.rv-filter:hover{border-color:var(--rv-ink)}
+.rv-filter[data-active]{background:var(--rv-ink);color:var(--rv-sand);border-color:var(--rv-ink)}
+.rv-filter[data-active]:hover{color:var(--rv-sand)}
+
+/* --------------------------------------------------- product grids */
+
+.rv-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:clamp(14px,1.6vw,22px);
+  padding:0 var(--rv-gutter) clamp(48px,6vw,84px);
+  margin:0;list-style:none;
+}
+.rv-grid--flush{padding:0;margin-top:30px}
+.rv-grid--related{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+
+.rv-card{display:flex;flex-direction:column;gap:10px}
+.rv-card__media{
+  position:relative;
+  height:clamp(250px,25vw,320px);
+  padding:clamp(16px,1.8vw,26px);
+  margin:0;
+}
+.rv-card--related .rv-card__media{height:clamp(220px,23vw,290px);padding:clamp(14px,1.6vw,22px)}
+.rv-card__media img{
+  width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;
+  transition:transform .4s cubic-bezier(.19,.86,.24,1);
+}
+.rv-card:hover .rv-card__media img{transform:scale(1.04)}
+
+.rv-card__tag{
+  position:absolute;top:0;left:0;
+  background:var(--rv-cream);
+  padding:7px 10px;
+  font:italic 700 9.5px/1 var(--rv-body);letter-spacing:.16em;
+  color:var(--rv-muted);
+  pointer-events:none;
+}
+.rv-card__rule{height:1px;background:var(--rv-ink)}
+.rv-card__name{font:700 14px/1.3 var(--rv-body);margin:0}
+.rv-card--related .rv-card__name{font-size:13.5px}
+.rv-card__meta{font:500 12px/1.5 var(--rv-body);color:var(--rv-muted);margin:0}
+.rv-card__cta{
+  font:italic 600 10px/1.5 var(--rv-body);letter-spacing:.12em;
+  color:var(--rv-red-deep);margin:0;
+}
+.rv-card a{display:flex;flex-direction:column;gap:10px}
+.rv-card a:hover{color:inherit}
+.rv-card a:hover .rv-card__cta{color:var(--rv-red)}
+
+.rv-empty{
+  padding:40px var(--rv-gutter) clamp(48px,6vw,84px);
+  font:500 14px/1.65 var(--rv-body);color:var(--rv-muted);
+}
+
+/* -------------------------------------------------------- dark CTA */
+
+.rv-band--split{align-items:center}
+.rv-band__contact{
+  display:flex;flex-direction:column;gap:12px;align-items:flex-start;
+  font:italic 700 10.5px/1 var(--rv-body);letter-spacing:.18em;
+}
+.rv-band__contact span{color:rgba(231,225,213,.6)}
+.rv-band__contact a[href^="mailto"]{color:rgba(231,225,213,.6);padding:8px 0}
+.rv-band__contact a[href^="mailto"]:hover{color:var(--rv-sand)}
+.rv-band .rv-btn--red{color:var(--rv-cream)}
+
+.rv-footbar{
+  background:var(--rv-ink);color:var(--rv-sand);
+  padding:clamp(32px,4vw,56px) var(--rv-gutter);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:24px;
+  font:italic 700 10.5px/1 var(--rv-body);letter-spacing:.18em;
+}
+.rv-footbar a:last-child{color:rgba(231,225,213,.6)}
+.rv-footbar a:hover{color:var(--rv-red)}
+
+/* ================================================================
+   Pièce (product detail)
+   ================================================================ */
+
+.rv-piece{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:clamp(20px,3vw,44px);
+  align-items:start;
+  padding:0 var(--rv-gutter) clamp(40px,5vw,72px);
+}
+.rv-piece__figure{
+  margin:0;
+  height:clamp(340px,42vw,540px);
+  padding:clamp(20px,2.6vw,40px);
+}
+.rv-piece__figure img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+
+.rv-piece__name{
+  font-family:var(--rv-display);font-weight:800;
+  font-size:clamp(30px,4.2vw,56px);line-height:.95;letter-spacing:-.01em;
+  text-transform:uppercase;margin:0;
+}
+.rv-piece__sub{font:500 14px/1.6 var(--rv-body);color:var(--rv-red-deep);margin:14px 0 0;max-width:520px}
+.rv-piece__detail{font:500 15px/1.7 var(--rv-body);color:rgba(26,23,20,.68);margin:16px 0 0;max-width:520px}
+
+.rv-tags{display:flex;flex-wrap:wrap;gap:6px;margin:22px 0 0;padding:0;list-style:none}
+.rv-tag{
+  border:1px solid rgba(26,23,20,.22);
+  padding:7px 10px;
+  font:italic 600 9.5px/1 var(--rv-body);letter-spacing:.12em;
+  color:rgba(26,23,20,.7);
+}
+
+.rv-specs{margin:30px 0 0;border-top:1px solid var(--rv-ink)}
+.rv-specs div{
+  display:grid;grid-template-columns:minmax(110px,1fr) 2fr;gap:18px;
+  padding:14px 2px;border-bottom:1px solid var(--rv-rule);
+}
+.rv-specs dt{font:italic 700 10px/1.4 var(--rv-body);letter-spacing:.14em;color:rgba(26,23,20,.5);margin:0}
+.rv-specs dd{font:500 13px/1.5 var(--rv-body);margin:0}
+
+.rv-note{
+  margin:28px 0 0;
+  background:var(--rv-cream);
+  border:1px solid var(--rv-rule);
+  padding:22px 24px;
+}
+.rv-note__list{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:10px 26px;margin:16px 0 0;padding:0;list-style:none;
+  font:500 13px/1.55 var(--rv-body);
+}
+
+.rv-related{padding:0 var(--rv-gutter) clamp(48px,6vw,84px)}
+.rv-related .rv-eyebrow{margin-bottom:20px}
+
+/* ================================================================
+   Sur-mesure
+   ================================================================ */
+
+.rv-split{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:clamp(20px,3vw,44px);
+  align-items:center;
+  padding:clamp(40px,5vw,72px) var(--rv-gutter);
+}
+.rv-split__media{
+  margin:0;height:clamp(260px,30vw,420px);
+  background:var(--rv-cream);overflow:hidden;
+}
+.rv-split__media img,.rv-split__media video{
+  width:100%;height:100%;object-fit:cover;object-position:center 30%;
+}
+.rv-split__title{
+  font-family:var(--rv-display);font-weight:800;
+  font-size:clamp(32px,5vw,66px);line-height:.95;letter-spacing:-.01em;
+  text-transform:uppercase;margin:18px 0 0;
+}
+.rv-split__text{font:500 15px/1.7 var(--rv-body);color:rgba(26,23,20,.68);max-width:520px;margin:20px 0 0}
+
+.rv-steps{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:clamp(16px,2vw,26px);margin:28px 0 0;padding:0;list-style:none;
+  counter-reset:rv-step;
+}
+.rv-step{border-top:2px solid var(--rv-ink);padding-top:16px}
+.rv-step__num{font-family:var(--rv-display);font-weight:800;font-size:26px;letter-spacing:-.015em}
+.rv-step__title{font:700 14px/1.35 var(--rv-body);margin:10px 0 0}
+.rv-step__text{font:500 12.5px/1.6 var(--rv-body);color:var(--rv-muted);margin:8px 0 0}
+
+.rv-dark{background:var(--rv-ink);color:var(--rv-sand);padding:clamp(40px,5vw,68px) var(--rv-gutter)}
+.rv-dark__grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:clamp(20px,3vw,40px);margin:0;padding:0;list-style:none;
+}
+.rv-dark__label{font:italic 800 10px/1 var(--rv-body);letter-spacing:.2em;color:var(--rv-red);margin:0}
+.rv-dark__text{font:500 13.5px/1.7 var(--rv-body);color:rgba(231,225,213,.72);margin:14px 0 0}
+
+.rv-closer{
+  padding:clamp(40px,5vw,68px) var(--rv-gutter);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;
+}
+.rv-closer__title{
+  font-family:var(--rv-display);font-weight:800;
+  font-size:clamp(26px,3.6vw,46px);line-height:.95;letter-spacing:-.01em;
+  text-transform:uppercase;max-width:620px;margin:0;
+}
+
+/* ================================================================
+   Atelier
+   ================================================================ */
+
+.rv-hero{
+  position:relative;min-height:min(560px,70vw);
+  display:flex;align-items:flex-end;overflow:hidden;background:var(--rv-ink);
+}
+.rv-hero__media{position:absolute;inset:0}
+.rv-hero__media video,.rv-hero__media img{width:100%;height:100%;object-fit:cover;display:block}
+.rv-hero__scrim{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(transparent 35%,rgba(26,23,20,.88));
+}
+.rv-hero__copy{
+  position:relative;z-index:1;
+  padding:clamp(40px,5vw,64px) var(--rv-gutter);
+  color:var(--rv-cream);
+}
+.rv-hero__eyebrow{font:italic 800 11.5px/1 var(--rv-body);letter-spacing:.2em;color:var(--rv-red);margin:0}
+.rv-hero__title{
+  font-family:var(--rv-display);font-weight:800;
+  font-size:clamp(48px,9vw,150px);line-height:.92;letter-spacing:-.01em;
+  text-transform:uppercase;margin:16px 0 0;max-width:900px;
+}
+
+.rv-cols{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:clamp(20px,3vw,40px);padding:clamp(36px,4.5vw,64px) var(--rv-gutter);
+}
+.rv-cols p{font:500 15px/1.75 var(--rv-body);color:rgba(26,23,20,.7);margin:0}
+
+.rv-machines{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;margin:28px 0 0;padding:0;list-style:none;
+}
+.rv-machines li{height:clamp(210px,26vw,330px);overflow:hidden}
+.rv-machines img{width:100%;height:100%;object-fit:cover}
+
+
+/* ================================================================
+   Contact form
+   ================================================================ */
+
+.rv-contact{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:clamp(28px,4vw,56px);align-items:start;
+  padding:clamp(40px,5vw,76px) var(--rv-gutter);
+}
+.rv-contact__title{
+  font-family:var(--rv-display);font-weight:800;
+  font-size:clamp(30px,4.4vw,58px);line-height:.95;letter-spacing:-.01em;
+  text-transform:uppercase;margin:18px 0 0;
+}
+.rv-contact__text{font:500 14.5px/1.7 var(--rv-body);color:var(--rv-muted-soft);max-width:440px;margin:20px 0 0}
+.rv-coords{
+  display:flex;flex-direction:column;gap:8px;margin:28px 0 0;padding:0;list-style:none;
+  font:italic 700 10.5px/1.5 var(--rv-body);letter-spacing:.16em;
+}
+.rv-coords a{color:var(--rv-red-deep);padding:6px 0;display:inline-block}
+.rv-coords a:hover{color:var(--rv-red)}
+.rv-coords span{color:rgba(26,23,20,.55)}
+
+.rv-form{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:14px;
+  background:var(--rv-cream);
+  padding:clamp(22px,2.6vw,32px);
+  border:1px solid var(--rv-rule);
+}
+.rv-form__field{display:flex;flex-direction:column;gap:6px}
+.rv-form__field--wide{grid-column:1/-1}
+.rv-form label{
+  font:italic 700 9.5px/1 var(--rv-body);letter-spacing:.16em;
+  color:rgba(26,23,20,.55);
+}
+.rv-form input,.rv-form select,.rv-form textarea{
+  padding:14px 15px;
+  border:1px solid rgba(26,23,20,.2);
+  background:transparent;
+  font:500 13.5px/1.35 var(--rv-body);
+  color:var(--rv-ink);
+  border-radius:0;
+  width:100%;
+}
+.rv-form textarea{line-height:1.55;resize:vertical}
+.rv-form input:focus,.rv-form select:focus,.rv-form textarea:focus{
+  outline:none;border-color:var(--rv-red);box-shadow:0 0 0 1px var(--rv-red);
+}
+.rv-form__foot{
+  grid-column:1/-1;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;
+}
+.rv-form__note{
+  font:italic 600 10px/1.5 var(--rv-body);letter-spacing:.12em;
+  color:rgba(26,23,20,.5);
+}
+.rv-form__status{
+  grid-column:1/-1;margin:0;
+  font:500 13px/1.55 var(--rv-body);color:var(--rv-red-deep);
+}
+.rv-form__status:empty{display:none}
+
+/* ---------------------------------------------------- language switcher */
+
+.rv-lang{
+  display:flex;align-items:center;gap:2px;
+  font:italic 700 10.5px/1 var(--rv-body);letter-spacing:.16em;
+}
+.rv-lang__item{
+  padding:9px 7px;
+  color:rgba(26,23,20,.45);
+  transition:color .22s;
+}
+.rv-lang__item + .rv-lang__item{border-left:1px solid var(--rv-rule)}
+.rv-lang__item:hover{color:var(--rv-red)}
+.rv-lang__item[aria-current]{color:var(--rv-ink)}
+
+/* On the accueil the switcher sits in the light top bar, same as elsewhere. */
+.rv-topbar .rv-lang__item{color:rgba(26,23,20,.45)}
+.rv-topbar .rv-lang__item[aria-current]{color:var(--rv-ink)}

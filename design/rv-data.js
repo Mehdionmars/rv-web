@@ -1,6 +1,6 @@
 export const LABELS = { industrie: "INDUSTRIE", cuisine: "CUISINE", service: "SERVICE", logistique: "LOGISTIQUE", protection: "PROTECTION", agro: "AGROALIMENTAIRE", scolaire: "SCOLAIRE" };
 
-const U = "uploads/";
+const U = "../public/uploads/";
 
 // Photographie produit : vêtement seul, fond neutre, aucun modèle.
 export const PRODUCT = {
