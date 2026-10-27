@@ -31,10 +31,7 @@
   background:linear-gradient(rgba(14,13,11,.85),rgba(14,13,11,0));
 }
 .v3-mark{display:flex;align-items:center;gap:10px;font:900 24px/1 var(--cond);letter-spacing:.02em}
-.v3-nav{display:flex;gap:4px 22px;flex-wrap:wrap;flex:1}
-.v3-nav a{font:700 11px/1 var(--mono);letter-spacing:.08em;padding:8px 0}
-.v3-nav a:hover,.v3-nav a[aria-current="page"]{color:var(--red)}
-.v3-top__end{display:flex;align-items:center;gap:16px}
+.v3-top__end{display:flex;align-items:center;gap:16px;margin-left:auto}
 .v3-top__end .rv-lang__item{color:var(--dim);font-family:var(--mono)}
 .v3-top__end .rv-lang__item[aria-current]{color:var(--cream)}
 .v3-top__end .rv-lang__item + .rv-lang__item{border-left-color:var(--rule)}
@@ -213,16 +210,13 @@
 
 /* ----------------------------------------------------------- responsive */
 @media (max-width:900px){
-  .v3-nav{order:3;flex-basis:100%}
-  .v3-top__end{margin-left:auto}
-  .v3-hero{padding-top:150px}
+    .v3-hero{padding-top:150px}
   .v3-metiers ul{grid-template-columns:1fr 1fr}
   .v3-metiers li.is-photo,.v3-metiers li.is-photo:first-child{grid-column:span 2;grid-row:span 1}
   .v3-contact{grid-template-columns:1fr}
 }
 @media (max-width:560px){
-  .v3-nav{gap:4px 16px}
-  .v3-btn--xl{font-size:18px;padding:18px 22px}
+    .v3-btn--xl{font-size:18px;padding:18px 22px}
   .v3-tags__rail > li{flex-basis:210px}
   .v3-metiers li:not(.is-photo) .v3-metiers__name{font-size:clamp(20px,6vw,28px);hyphens:auto;overflow-wrap:anywhere}
 }

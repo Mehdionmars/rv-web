@@ -29,7 +29,7 @@ export default async function MetiersPage({ params }: Params) {
 
   return (
     <>
-      <SiteHeader locale={locale} current="metiers" />
+      <SiteHeader locale={locale} />
 
       <main id="contenu">
         <div className="rv-intro">

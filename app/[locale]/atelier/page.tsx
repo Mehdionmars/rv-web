@@ -37,7 +37,7 @@ export default async function AtelierPage({ params }: Params) {
 
   return (
     <>
-      <SiteHeader locale={locale} current="atelier" />
+      <SiteHeader locale={locale} />
 
       <main id="contenu">
         <section className="rv-hero">

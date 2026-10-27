@@ -27,7 +27,7 @@ export default async function SurMesurePage({ params }: Params) {
 
   return (
     <>
-      <SiteHeader locale={locale} current="sur-mesure" />
+      <SiteHeader locale={locale} />
 
       <main id="contenu">
         <div className="rv-split">

@@ -28,7 +28,7 @@ export default function CatalogueView({
 
   return (
     <>
-      <SiteHeader locale={locale} current="catalogue" />
+      <SiteHeader locale={locale} />
 
       <main id="contenu">
         <div className="rv-section rv-section--tight">
