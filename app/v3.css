@@ -63,7 +63,9 @@
 
 .v3-hero__title{
   margin:0;
-  font:900 clamp(84px,17vw,280px)/.8 var(--cond);
+  /* Sized from the width so the longest line ("N'ATTEND", ~4.9em, plus its
+     indent) always fits between the gutters, phones included. */
+  font:400 min(calc((100vw - 2 * var(--g)) / 5.9),280px)/.88 var(--cond);
   letter-spacing:-.01em;text-transform:uppercase;
 }
 .v3-hero__title span{display:block;animation:v3-up .8s cubic-bezier(.2,.8,.2,1) both}
@@ -95,7 +97,7 @@
   padding:0 var(--g);margin-bottom:clamp(28px,4vw,56px);
 }
 .v3-head h2{
-  margin:0;font:900 clamp(56px,9vw,150px)/.82 var(--cond);text-transform:uppercase;
+  margin:0;font:400 clamp(40px,9vw,150px)/.9 var(--cond);text-transform:uppercase;
 }
 .v3-head p{margin:0;font:400 12px/1.4 var(--mono);color:var(--dim);max-width:32ch}
 
@@ -148,7 +150,7 @@
 .v3-manifesto > p{margin:0}
 .v3-manifesto > p span{
   display:block;
-  font:900 clamp(56px,10vw,170px)/.84 var(--cond);text-transform:uppercase;
+  font:400 clamp(40px,10vw,170px)/.9 var(--cond);text-transform:uppercase;
 }
 .v3-manifesto .is-red{color:var(--red)}
 
@@ -185,7 +187,7 @@
 /* -------------------------------------------------------------- contact */
 .v3-contact{display:grid;grid-template-columns:1fr 1fr;background:#fff;color:var(--k)}
 .v3-contact__copy{padding:clamp(64px,8vw,120px) var(--g)}
-.v3-contact h2{margin:0;font:400 clamp(56px,8vw,130px)/.95 var(--cond);text-transform:uppercase}
+.v3-contact h2{margin:0;font:400 clamp(40px,8vw,130px)/.95 var(--cond);text-transform:uppercase}
 .v3-contact h2 span{color:var(--red)}
 .v3-contact__copy > p{max-width:42ch;margin:28px 0 32px;font-size:16px;line-height:1.55;color:rgba(14,13,11,.7)}
 .v3-contact__copy ul{list-style:none;margin:0;padding:0;border-top:2px solid var(--k)}
@@ -216,7 +218,11 @@
   .v3-contact{grid-template-columns:1fr}
 }
 @media (max-width:560px){
-    .v3-btn--xl{font-size:18px;padding:18px 22px}
+  .v3-top{gap:12px;padding:12px var(--g)}
+  .v3-mark{font-size:18px}
+  .v3-top__end{gap:8px}
+  .v3-top .v3-btn{padding:10px 12px;font-size:12px}
+  .v3-btn--xl{font-size:18px;padding:18px 22px}
   .v3-tags__rail > li{flex-basis:210px}
   .v3-metiers li:not(.is-photo) .v3-metiers__name{font-size:clamp(20px,6vw,28px);hyphens:auto;overflow-wrap:anywhere}
 }
