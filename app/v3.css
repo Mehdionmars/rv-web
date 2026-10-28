@@ -221,7 +221,7 @@
   .v3-top{gap:12px;padding:12px var(--g)}
   .v3-mark{font-size:18px}
   .v3-top__end{gap:8px}
-  .v3-top .v3-btn{padding:10px 12px;font-size:12px}
+  .v3-top .v3-btn{display:none}
   .v3-btn--xl{font-size:18px;padding:18px 22px}
   .v3-tags__rail > li{flex-basis:210px}
   .v3-metiers li:not(.is-photo) .v3-metiers__name{font-size:clamp(20px,6vw,28px);hyphens:auto;overflow-wrap:anywhere}
