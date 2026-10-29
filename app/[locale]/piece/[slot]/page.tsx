@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
+import SewingIcon from "@/components/SewingIcon";
 import ProductCard from "@/components/ProductCard";
 import { FootBar, MAIL_MAIN } from "@/components/Bands";
 import { LOCALES, isLocale } from "@/lib/i18n/config";
@@ -120,6 +121,7 @@ export default async function PiecePage({ params }: Params) {
 
         {related.length > 0 && (
           <section className="rv-related" aria-labelledby="rv-related-title">
+            <SewingIcon name="needles" className="rv-page-ico" />
             <h2 className="rv-eyebrow" id="rv-related-title">
               {t.piece.related}
             </h2>

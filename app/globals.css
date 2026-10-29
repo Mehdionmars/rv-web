@@ -2,7 +2,7 @@
    Implemented from the Claude Design canvas (Rougevif Site.dc.html family). */
 
 :root{
-  --rv-sand:#F3EEE4;
+  --rv-sand:#FFFFFF;
   --rv-cream:#FFFFFF;
   --rv-ink:#0E0D0B;
   --rv-red:#E2001A;
@@ -303,8 +303,8 @@ a{color:inherit;text-decoration:none}
   display:flex;flex-direction:column;gap:12px;align-items:flex-start;
   font:italic 700 10.5px/1 var(--rv-body);letter-spacing:.18em;
 }
-.rv-band__contact span{color:rgba(231,225,213,.6)}
-.rv-band__contact a[href^="mailto"]{color:rgba(231,225,213,.6);padding:8px 0}
+.rv-band__contact span{color:rgba(255,255,255,.6)}
+.rv-band__contact a[href^="mailto"]{color:rgba(255,255,255,.6);padding:8px 0}
 .rv-band__contact a[href^="mailto"]:hover{color:var(--rv-sand)}
 .rv-band .rv-btn--red{color:var(--rv-cream)}
 
@@ -315,7 +315,7 @@ a{color:inherit;text-decoration:none}
   gap:24px;
   font:italic 700 10.5px/1 var(--rv-body);letter-spacing:.18em;
 }
-.rv-footbar a:last-child{color:rgba(231,225,213,.6)}
+.rv-footbar a:last-child{color:rgba(255,255,255,.6)}
 .rv-footbar a:hover{color:var(--rv-red)}
 
 /* ================================================================
@@ -416,7 +416,7 @@ a{color:inherit;text-decoration:none}
   gap:clamp(20px,3vw,40px);margin:0;padding:0;list-style:none;
 }
 .rv-dark__label{font:italic 800 10px/1 var(--rv-body);letter-spacing:.2em;color:var(--rv-red);margin:0}
-.rv-dark__text{font:500 13.5px/1.7 var(--rv-body);color:rgba(231,225,213,.72);margin:14px 0 0}
+.rv-dark__text{font:500 13.5px/1.7 var(--rv-body);color:rgba(255,255,255,.72);margin:14px 0 0}
 
 .rv-closer{
   padding:clamp(40px,5vw,68px) var(--rv-gutter);

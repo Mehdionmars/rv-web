@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
+import SewingIcon from "@/components/SewingIcon";
 import DevisForm from "@/components/DevisForm";
 import { FootBar, MAIL_ALT, MAIL_MAIN, PHONE } from "@/components/Bands";
 import { LOCALES, isLocale } from "@/lib/i18n/config";
@@ -31,6 +32,7 @@ export default async function ContactPage({ params }: Params) {
       <main id="contenu">
         <div className="rv-contact">
           <div>
+            <SewingIcon name="needle-curl" className="rv-page-ico" />
             <p className="rv-eyebrow">{t.contact.eyebrow}</p>
             <h1 className="rv-contact__title">{t.contact.heading}</h1>
             <p className="rv-contact__text">{t.contact.lede}</p>

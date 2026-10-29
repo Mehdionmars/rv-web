@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
+import SewingIcon from "@/components/SewingIcon";
 import { Closer } from "@/components/Bands";
 import { DEFAULT_LOCALE } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
@@ -15,6 +16,7 @@ export default function NotFound() {
       <SiteHeader locale={locale} />
       <main id="contenu">
         <div className="rv-intro">
+          <SewingIcon name="machine-outline" className="rv-page-ico" />
           <p className="rv-eyebrow">{t.eyebrow}</p>
           <h1 className="rv-title">{t.heading}</h1>
           <p className="rv-lede">{t.lede}</p>

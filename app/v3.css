@@ -5,9 +5,9 @@
   --k:#0E0D0B;
   --k2:#1B1916;
   --red:#E2001A;
-  --cream:#F3EEE4;
-  --dim:rgba(243,238,228,.6);
-  --rule:rgba(243,238,228,.16);
+  --cream:#FFFFFF;
+  --dim:rgba(255,255,255,.6);
+  --rule:rgba(255,255,255,.16);
   --cond:var(--rv-body);
   --mono:var(--rv-body);
   --g:clamp(16px,3vw,40px);
@@ -63,9 +63,10 @@
 
 .v3-hero__title{
   margin:0;
-  /* Sized from the width so the longest line ("N'ATTEND", ~4.9em, plus its
-     indent) always fits between the gutters, phones included. */
-  font:400 min(calc((100vw - 2 * var(--g)) / 5.9),280px)/.88 var(--cond);
+  /* Sized from both the width and the height: the longest line ("N'ATTEND",
+     ~4.9em plus its indent) fits between the gutters, and the three lines
+     (~2.7em) leave room for the header, lede and button within one screen. */
+  font:400 max(40px,min(calc((100vw - 2 * var(--g)) / 5.9),calc((100svh - 340px) / 2.7),280px))/.88 var(--cond);
   letter-spacing:-.01em;text-transform:uppercase;
 }
 .v3-hero__title span{display:block;animation:v3-up .8s cubic-bezier(.2,.8,.2,1) both}
@@ -228,4 +229,89 @@
 }
 @media (prefers-reduced-motion:reduce){
   .v3 *,.v3-top *{animation:none !important;transition:none !important}
+}
+
+/* ------------------------------------------------------ sewing icons */
+.sw{display:block;color:var(--red);overflow:visible}
+.sw-thread,.sw-wind,.sw-line,.sw-pin,.sw-outline,.sw-cut{
+  fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;
+}
+.sw-thread{stroke-width:4.5}
+.sw-wind{stroke-width:4}
+.sw-line{stroke-width:7}
+.sw-outline{stroke-width:7}
+.sw-cut{stroke-width:3;stroke-dasharray:6 6}
+.sw-pin{stroke-width:7;transform-box:fill-box;transform-origin:50% 100%}
+
+/* hidden until the icon scrolls into view */
+.sw-thread,.sw-wind,.sw-outline{stroke-dasharray:1;stroke-dashoffset:1}
+.sw .sw-needle,.sw .sw-pin,.sw .sw-line,.sw .sw-bobbin,.sw .sw-fill,.sw .sw-bar,.sw .sw-cut{opacity:0}
+.sw-swing{transform-box:view-box;transform-origin:120px 58px}
+.sw-cross-a,.sw-cross-b{transform-box:view-box;transform-origin:104px 106px}
+
+.sw[data-in] .sw-thread{animation:sw-draw 1.6s cubic-bezier(.6,.1,.3,1) forwards}
+.sw[data-in] .sw-wind{animation:sw-draw .5s ease-out forwards}
+.sw[data-in] .sw-line{animation:sw-fade .5s ease-out forwards}
+.sw[data-in] .sw-needle{animation:sw-fade .4s ease-out forwards,sw-stitch 2.6s ease-in-out 1.6s infinite}
+.sw[data-in] .sw-pin{animation:sw-drop .6s cubic-bezier(.3,1.5,.5,1) both,sw-sway 3.2s ease-in-out infinite}
+.sw[data-in] .sw-bobbin{animation:sw-fade .5s ease-out forwards}
+.sw[data-in] .sw-wrap{animation:sw-wind 3s linear infinite}
+.sw[data-in] .sw-outline{animation:sw-draw 1.4s cubic-bezier(.6,.1,.3,1) forwards}
+.sw[data-in] .sw-fill{animation:sw-fade .6s ease-out forwards}
+.sw[data-in] .sw-bar{animation:sw-fade .4s ease-out .3s forwards,sw-sew .5s ease-in-out 1s infinite}
+.sw[data-in] .sw-cut{animation:sw-fade .3s 1.2s forwards}
+.sw-blade-a,.sw-blade-b{transform-box:view-box;transform-origin:126px 182px}
+.sw[data-in] .sw-scissors{animation:sw-cutpath 3s ease-in-out 1.2s infinite}
+.sw[data-in] .sw-blade-a{animation:sw-snip-a .3s ease-in-out 1.2s infinite alternate}
+.sw[data-in] .sw-blade-b{animation:sw-snip-b .3s ease-in-out 1.2s infinite alternate}
+.sw-ball{transform-box:view-box;transform-origin:92px 86px}
+.sw[data-in] .sw-ball{animation:sw-roll 4s ease-in-out 1.2s infinite}
+.sw[data-in] .sw-wrapy{animation:sw-windy 3s linear 1s infinite}
+.sw[data-in] .sw-swing{animation:sw-pendulum 2.8s ease-in-out 1.2s infinite}
+.sw[data-in] .sw-cross-a{animation:sw-in-a .8s cubic-bezier(.2,.8,.2,1) both,sw-open-a 3s ease-in-out 1s infinite}
+.sw[data-in] .sw-cross-b{animation:sw-in-b .8s cubic-bezier(.2,.8,.2,1) .1s both,sw-open-b 3s ease-in-out 1s infinite}
+
+@keyframes sw-draw{to{stroke-dashoffset:0}}
+@keyframes sw-fade{to{opacity:1}}
+/* needles push in and pull back along their own axis, like a stitch */
+@keyframes sw-stitch{0%,100%{transform:translateX(0)}45%{transform:translateX(9px)}60%{transform:translateX(9px)}}
+@keyframes sw-drop{from{opacity:0;transform:translateY(-40px)}to{opacity:1;transform:none}}
+@keyframes sw-sway{0%,100%{rotate:0deg}50%{rotate:-4deg}}
+/* thread wraps slide along the bobbin core as if it were winding */
+@keyframes sw-wind{to{transform:translateX(30px)}}
+/* sewing machine needle bar */
+@keyframes sw-sew{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+/* scissors snip while travelling along the dashed cut line */
+@keyframes sw-snip-a{to{rotate:-14deg}}
+@keyframes sw-snip-b{to{rotate:14deg}}
+@keyframes sw-cutpath{0%,100%{transform:translateX(0)}50%{transform:translateX(-58px)}}
+@keyframes sw-roll{0%,100%{rotate:0deg}50%{rotate:-10deg}}
+@keyframes sw-windy{to{transform:translateY(30px)}}
+@keyframes sw-pendulum{0%,100%{rotate:0deg}50%{rotate:9deg}}
+/* crossed needles slide in from opposite sides, then open and close a little */
+@keyframes sw-in-a{from{transform:translate(-30px,-30px);opacity:0}}
+@keyframes sw-in-b{from{transform:translate(30px,-30px);opacity:0}}
+@keyframes sw-open-a{0%,100%{rotate:0deg}50%{rotate:-6deg}}
+@keyframes sw-open-b{0%,100%{rotate:0deg}50%{rotate:6deg}}
+
+/* placements */
+.v3-head__ico{width:clamp(64px,8vw,120px);height:auto;flex:none}
+.v3-head__title{display:flex;align-items:flex-end;gap:clamp(12px,2vw,28px)}
+.v3-manifesto{display:grid;grid-template-columns:1fr auto;align-items:end;gap:clamp(24px,4vw,64px)}
+.v3-manifesto__ico{width:clamp(110px,18vw,280px);height:auto}
+.v3-contact__ico{width:clamp(72px,9vw,130px);height:auto;margin-bottom:24px}
+.v3-foot__row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.v3-foot__ico{width:56px;height:auto;flex:none}
+.rv-page-ico{width:clamp(80px,10vw,140px);height:auto;margin:0 0 20px}
+.rv-band-ico{width:clamp(64px,7vw,96px);height:auto;flex:none}
+
+@media (max-width:560px){
+  .v3-manifesto{grid-template-columns:1fr}
+  .v3-manifesto__ico{justify-self:end;width:120px}
+}
+@media (prefers-reduced-motion:reduce){
+  .sw-thread,.sw-wind{stroke-dashoffset:0}
+  .sw-outline{stroke-dashoffset:0}
+  .sw .sw-needle,.sw .sw-pin,.sw .sw-line,.sw .sw-bobbin,.sw .sw-fill,.sw .sw-bar,.sw .sw-cut{opacity:1}
+  .sw *{animation:none !important}
 }

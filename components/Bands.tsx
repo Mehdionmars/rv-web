@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SewingIcon from "./SewingIcon";
 import type { Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
 
@@ -19,6 +20,7 @@ export function QuoteBand({
 
   return (
     <section className="rv-band rv-band--split">
+      <SewingIcon name="spool-bob" className="rv-band-ico" />
       <p className="rv-band__title">
         {line1}
         <br />
@@ -48,6 +50,7 @@ export function Closer({
 }) {
   return (
     <section className="rv-closer">
+      <SewingIcon name="spool-line" className="rv-band-ico" />
       <h2 className="rv-closer__title">{title}</h2>
       <Link className="rv-btn rv-btn--red rv-btn--red-ink" href={href}>
         {cta}

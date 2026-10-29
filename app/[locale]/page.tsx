@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
+import SewingIcon from "@/components/SewingIcon";
 import DevisForm from "@/components/DevisForm";
 import { MAIL_ALT, MAIL_MAIN, PHONE } from "@/components/Bands";
 import { LOCALES, isLocale } from "@/lib/i18n/config";
@@ -109,7 +110,10 @@ export default async function HomeV3({ params }: Params) {
         {/* ---------------------------------------------------------- tags */}
         <section className="v3-tags" aria-labelledby="v3-tags">
           <header className="v3-head">
-            <h2 id="v3-tags">{c.tagsTitle}</h2>
+            <div className="v3-head__title">
+              <h2 id="v3-tags">{c.tagsTitle}</h2>
+              <SewingIcon name="needle" className="v3-head__ico" />
+            </div>
             <p>{c.tagsSub}</p>
           </header>
           <ul className="v3-tags__rail">
@@ -151,12 +155,16 @@ export default async function HomeV3({ params }: Params) {
               </span>
             ))}
           </p>
+          <SewingIcon name="spool" className="v3-manifesto__ico" />
         </section>
 
         {/* ------------------------------------------------------ métiers */}
         <section className="v3-metiers" aria-labelledby="v3-metiers">
           <header className="v3-head">
-            <h2 id="v3-metiers">{c.metiersTitle}</h2>
+            <div className="v3-head__title">
+              <h2 id="v3-metiers">{c.metiersTitle}</h2>
+              <SewingIcon name="pins" className="v3-head__ico" />
+            </div>
           </header>
           <ul>
             {metiers.map((m, i) => {
@@ -194,6 +202,7 @@ export default async function HomeV3({ params }: Params) {
         {/* ------------------------------------------------------ contact */}
         <section className="v3-contact" id="devis" aria-labelledby="v3-contact">
           <div className="v3-contact__copy">
+            <SewingIcon name="needle-loop" className="v3-contact__ico" />
             <h2 id="v3-contact">
               {c.contactTitle[0]}
               <br />

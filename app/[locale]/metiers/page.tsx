@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
+import SewingIcon from "@/components/SewingIcon";
 import { LOCALES, isLocale } from "@/lib/i18n/config";
 import { getImage, getItemsFor, getMetiers } from "@/lib/i18n/catalogue";
 import { getMessages } from "@/lib/i18n/messages";
@@ -33,6 +34,7 @@ export default async function MetiersPage({ params }: Params) {
 
       <main id="contenu">
         <div className="rv-intro">
+          <SewingIcon name="yarn" className="rv-page-ico" />
           <p className="rv-eyebrow">{t.metiers.eyebrow}</p>
           <h1 className="rv-title">{t.metiers.heading}</h1>
           <p className="rv-lede">{t.metiers.lede}</p>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
+import SewingIcon from "@/components/SewingIcon";
 import { Closer } from "@/components/Bands";
 import { LOCALES, isLocale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
@@ -32,6 +33,7 @@ export default async function SurMesurePage({ params }: Params) {
       <main id="contenu">
         <div className="rv-split">
           <div>
+            <SewingIcon name="pattern" className="rv-page-ico" />
             <p className="rv-eyebrow">{t.eyebrow}</p>
             <h1 className="rv-split__title">{t.heading}</h1>
             <p className="rv-split__text">{t.lede}</p>

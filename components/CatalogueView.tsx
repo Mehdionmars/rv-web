@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ProductCard from "./ProductCard";
 import SiteHeader from "./SiteHeader";
+import SewingIcon from "./SewingIcon";
 import { QuoteBand } from "./Bands";
 import type { Locale } from "@/lib/i18n/config";
 import { getItems, getItemsFor, getLabels } from "@/lib/i18n/catalogue";
@@ -32,6 +33,7 @@ export default function CatalogueView({
 
       <main id="contenu">
         <div className="rv-section rv-section--tight">
+          <SewingIcon name="machine-line" className="rv-page-ico" />
           <p className="rv-eyebrow">
             {t.catalogue.eyebrow} — {t.common.references(shown.length)}
           </p>

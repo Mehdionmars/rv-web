@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
+import SewingIcon from "@/components/SewingIcon";
 import { Closer } from "@/components/Bands";
 import { LOCALES, isLocale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
@@ -67,6 +68,7 @@ export default async function AtelierPage({ params }: Params) {
         </div>
 
         <section className="rv-dark" aria-labelledby="rv-machines-title">
+          <SewingIcon name="machine" className="rv-page-ico" />
           <h2 className="rv-closer__title" id="rv-machines-title">
             {t.machinesTitle}
           </h2>
