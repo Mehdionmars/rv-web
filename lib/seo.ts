@@ -32,7 +32,9 @@ export function organizationJsonLd(locale: Locale, description: string) {
     foundingDate: "2011",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "Rue 32, 21 Lot Moune, Magasin RDC",
       addressLocality: "Casablanca",
+      addressRegion: "Aïn Chock",
       addressCountry: "MA",
     },
     areaServed: { "@type": "Country", name: "Morocco" },

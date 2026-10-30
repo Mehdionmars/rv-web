@@ -170,7 +170,7 @@ const fr: Messages = {
   },
   common: {
     references: (n) => `${n} ${n > 1 ? "RÉFÉRENCES" : "RÉFÉRENCE"}`,
-    address: "CASABLANCA",
+    address: "RUE 32, 21 LOT MOUNE, AÏN CHOCK — CASABLANCA",
     hours: "LUNDI — SAMEDI · 8 H 30 → 18 H",
     quoteBandTitle: ["Équipons", "votre équipe"],
     quoteCta: "DEMANDER UN DEVIS →",
@@ -179,7 +179,7 @@ const fr: Messages = {
     backToCatalogue: "← RETOUR AU CATALOGUE",
   },
   home: {
-    title: "Rougevif — Vêtement de travail, Casablanca",
+    title: "Vêtements de travail & EPI à Casablanca — Rougevif",
     description:
       "Rougevif, votre expert textile au Maroc pour des vêtements professionnels, publicitaires et EPI fiables, durables et personnalisés.",
     ticker:
@@ -410,7 +410,7 @@ const en: Messages = {
   },
   common: {
     references: (n) => `${n} ${n > 1 ? "REFERENCES" : "REFERENCE"}`,
-    address: "CASABLANCA",
+    address: "RUE 32, 21 LOT MOUNE, AÏN CHOCK — CASABLANCA",
     hours: "MONDAY — SATURDAY · 8.30 AM → 6 PM",
     quoteBandTitle: ["Let’s kit out", "your team"],
     quoteCta: "REQUEST A QUOTE →",
@@ -419,7 +419,7 @@ const en: Messages = {
     backToCatalogue: "← BACK TO CATALOGUE",
   },
   home: {
-    title: "Rougevif — Workwear, Casablanca",
+    title: "Workwear & PPE in Casablanca — Rougevif",
     description:
       "Rougevif, your textile expert in Morocco for reliable, durable and customised workwear, promotional apparel and PPE.",
     ticker:

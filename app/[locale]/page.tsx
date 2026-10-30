@@ -31,6 +31,7 @@ const PHOTOS: Record<string, string> = {
 
 const COPY = {
   fr: {
+    kicker: "Vêtements de travail & EPI à Casablanca",
     since: "Depuis 2011",
     title: ["Le travail", "n’attend", "pas."],
     lede: "Coupé, cousu et marqué sous un seul toit. Sergé 320 g/m², coutures triples, rivets laiton. Porté six jours sur sept.",
@@ -42,6 +43,7 @@ const COPY = {
     contactTitle: ["Votre équipe.", "Notre atelier."],
   },
   en: {
+    kicker: "Workwear & PPE in Casablanca",
     since: "Since 2011",
     title: ["Work", "doesn’t", "wait."],
     lede: "Cut, sewn and marked under one roof. 320 g/m² twill, triple stitching, brass rivets. Worn six days a week.",
@@ -86,6 +88,7 @@ export default async function HomeV3({ params }: Params) {
             />
           </div>
           <h1 className="v3-hero__title">
+            <small className="v3-hero__kicker">{c.kicker}</small>
             {c.title.map((line, i) => (
               <span key={line} style={{ animationDelay: `${i * 0.12}s` }}>
                 {line}
