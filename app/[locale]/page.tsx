@@ -4,10 +4,12 @@ import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
 import SewingIcon from "@/components/SewingIcon";
 import DevisForm from "@/components/DevisForm";
+import Faq from "@/components/Faq";
 import { MAIL_ALT, MAIL_MAIN, PHONE } from "@/components/Bands";
 import { LOCALES, isLocale } from "@/lib/i18n/config";
 import { getItem, getItemsFor, getMetiers } from "@/lib/i18n/catalogue";
 import { getMessages } from "@/lib/i18n/messages";
+import { HOME_FAQ } from "@/lib/i18n/seo-content";
 import { ATELIER_POSTER, ATELIER_VIDEO, PEXELS } from "@/lib/media";
 import { ITEMS, type Slot } from "@/lib/rv-data";
 
@@ -203,6 +205,14 @@ export default async function HomeV3({ params }: Params) {
             })}
           </ul>
         </section>
+
+        {/* ---------------------------------------------------------- faq */}
+        <Faq
+          id="v3-faq"
+          title={HOME_FAQ[locale].title}
+          items={HOME_FAQ[locale].items}
+          tone="dark"
+        />
 
         {/* ------------------------------------------------------ contact */}
         <section className="v3-contact" id="devis" aria-labelledby="v3-contact">

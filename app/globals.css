@@ -549,3 +549,28 @@ a{color:inherit;text-decoration:none}
 /* On the accueil the switcher sits in the light top bar, same as elsewhere. */
 .rv-topbar .rv-lang__item{color:rgba(26,23,20,.45)}
 .rv-topbar .rv-lang__item[aria-current]{color:var(--rv-ink)}
+
+/* ------------------------------------------------------------------ faq */
+.rv-faq{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(24px,4vw,64px);
+  padding:clamp(56px,7vw,112px) var(--rv-gutter);
+  border-top:1px solid var(--rv-rule);
+}
+.rv-faq__title{margin:0;font:400 clamp(32px,4.4vw,64px)/1 var(--rv-display);text-transform:uppercase}
+.rv-faq__list{border-top:2px solid currentColor}
+.rv-faq__item{border-bottom:1px solid var(--rv-rule)}
+.rv-faq__item summary{
+  display:flex;justify-content:space-between;align-items:baseline;gap:24px;
+  padding:20px 0;cursor:pointer;list-style:none;
+  font-size:clamp(17px,1.5vw,21px);line-height:1.35;
+}
+.rv-faq__item summary::-webkit-details-marker{display:none}
+.rv-faq__item summary::after{content:"+";flex:none;color:var(--rv-red);font-size:1.4em;line-height:1;transition:transform .2s}
+.rv-faq__item[open] summary::after{transform:rotate(45deg)}
+.rv-faq__item summary:hover{color:var(--rv-red)}
+.rv-faq__item summary:focus-visible{outline:2px solid var(--rv-red);outline-offset:4px}
+.rv-faq__item p{max-width:62ch;margin:0 0 24px;font-size:16px;line-height:1.6;color:var(--rv-muted)}
+.rv-faq--dark{border-top-color:rgba(255,255,255,.14)}
+.rv-faq--dark .rv-faq__item{border-bottom-color:rgba(255,255,255,.14)}
+.rv-faq--dark .rv-faq__item p{color:rgba(255,255,255,.66)}
+@media (max-width:860px){.rv-faq{grid-template-columns:1fr}}

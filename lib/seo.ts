@@ -5,7 +5,16 @@ import { MAIL_MAIN } from "@/components/Bands";
 export const SITE_URL = "https://www.rougevif.ma";
 
 /** Every route below /[locale], used by the sitemap. "" is the home page. */
-export const STATIC_PATHS = ["", "/catalogue", "/metiers", "/sur-mesure", "/atelier", "/contact"];
+export const STATIC_PATHS = [
+  "",
+  "/catalogue",
+  "/metiers",
+  "/textile-publicitaire",
+  "/epi",
+  "/sur-mesure",
+  "/atelier",
+  "/contact",
+];
 
 /** Canonical + hreflang for one page. `path` is what follows the locale, e.g. "/catalogue". */
 export function pageAlternates(locale: Locale, path = "") {
@@ -26,6 +35,7 @@ export function organizationJsonLd(locale: Locale, description: string) {
     "@id": `${SITE_URL}/#organization`,
     name: "Rougevif",
     url: `${SITE_URL}/${locale}`,
+    logo: `${SITE_URL}/apple-icon.png`,
     image: `${SITE_URL}/uploads/imgi_16_combinaison-de-travail-ce117.jpg`,
     description,
     email: MAIL_MAIN,

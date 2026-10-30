@@ -312,6 +312,9 @@
 .v3-manifesto{display:grid;grid-template-columns:1fr auto;align-items:end;gap:clamp(24px,4vw,64px)}
 .v3-manifesto__ico{width:clamp(110px,18vw,280px);height:auto}
 .v3-contact__ico{width:clamp(72px,9vw,130px);height:auto;margin-bottom:24px}
+.v3-foot__nav{display:flex;flex-wrap:wrap;gap:12px 28px;padding:8px 0 16px;border-bottom:1px solid var(--rule)}
+.v3-foot__nav a{color:var(--cream)}
+.v3-foot__nav a:hover{color:var(--red)}
 .v3-foot__row{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .v3-foot__ico{width:56px;height:auto;flex:none}
 .rv-page-ico{width:clamp(80px,10vw,140px);height:auto;margin:0 0 20px}
