@@ -4,6 +4,7 @@ import CatalogueView from "@/components/CatalogueView";
 import { LOCALES, isLocale } from "@/lib/i18n/config";
 import { getMetiers } from "@/lib/i18n/catalogue";
 import { getMessages } from "@/lib/i18n/messages";
+import { pageAlternates } from "@/lib/seo";
 import { LABELS, METIERS, type MetierKey } from "@/lib/rv-data";
 
 type Params = { params: Promise<{ locale: string; metier: string }> };
@@ -26,6 +27,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: t.metierTitle(m?.titre ?? metier),
     description: m?.texte,
+    alternates: pageAlternates(locale, `/catalogue/${metier}`),
   };
 }
 

@@ -8,6 +8,7 @@ import {
   type Locale,
 } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
+import { SITE_URL, organizationJsonLd, pageAlternates } from "@/lib/seo";
 import SiteFooter from "@/components/SiteFooter";
 import "../globals.css";
 import "../v3.css";
@@ -33,22 +34,19 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const t = getMessages(locale);
 
   return {
-    metadataBase: new URL("https://rougevif.ma"),
+    metadataBase: new URL(SITE_URL),
     title: {
       default: t.home.title,
       template: `%s — Rougevif`,
     },
     description: t.home.description,
-    alternates: {
-      canonical: `/${locale}`,
-      languages: Object.fromEntries(
-        LOCALES.map((l) => [HTML_LANG[l], `/${l}`]),
-      ),
-    },
+    alternates: pageAlternates(locale),
     openGraph: {
       type: "website",
       locale: HTML_LANG[locale].replace("-", "_"),
       siteName: "Rougevif",
+      url: `/${locale}`,
+      images: [{ url: "/uploads/imgi_16_combinaison-de-travail-ce117.jpg" }],
     },
   };
 }
@@ -72,6 +70,12 @@ export default async function LocaleLayout({
       className={plex.variable}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd(locale as Locale, t.home.description)),
+          }}
+        />
         <a className="rv-skip" href="#contenu">
           {t.nav.skip}
         </a>

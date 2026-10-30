@@ -31,6 +31,7 @@ const PHOTOS: Record<string, string> = {
 
 const COPY = {
   fr: {
+    since: "Depuis 2011",
     title: ["Le travail", "n’attend", "pas."],
     lede: "Coupé, cousu et marqué sous un seul toit. Sergé 320 g/m², coutures triples, rivets laiton. Porté six jours sur sept.",
     tagsTitle: "Le vestiaire",
@@ -41,6 +42,7 @@ const COPY = {
     contactTitle: ["Votre équipe.", "Notre atelier."],
   },
   en: {
+    since: "Since 2011",
     title: ["Work", "doesn’t", "wait."],
     lede: "Cut, sewn and marked under one roof. 320 g/m² twill, triple stitching, brass rivets. Worn six days a week.",
     tagsTitle: "The wardrobe",
@@ -218,6 +220,10 @@ export default async function HomeV3({ params }: Params) {
           </div>
           <div className="v3-contact__form">
             <DevisForm locale={locale} variant="short" />
+            <p className="v3-contact__since">
+              <span>{c.since.split(" ")[0]}</span>
+              {c.since.split(" ")[1]}
+            </p>
           </div>
         </section>
       </main>

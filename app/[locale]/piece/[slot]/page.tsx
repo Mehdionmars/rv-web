@@ -9,6 +9,7 @@ import { FootBar, MAIL_MAIN } from "@/components/Bands";
 import { LOCALES, isLocale } from "@/lib/i18n/config";
 import { getItem, getItemsFor, getLabel } from "@/lib/i18n/catalogue";
 import { getMessages } from "@/lib/i18n/messages";
+import { pageAlternates } from "@/lib/seo";
 import { ITEMS } from "@/lib/rv-data";
 
 type Params = { params: Promise<{ locale: string; slot: string }> };
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: item.name,
     description: `${item.sous}. ${item.matiere}.`,
+    alternates: pageAlternates(locale, `/piece/${slot}`),
     openGraph: { images: [{ url: item.img.src, alt: item.img.alt }] },
   };
 }

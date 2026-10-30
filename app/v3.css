@@ -195,6 +195,14 @@
 .v3-contact__copy li{padding:12px 0;border-bottom:1px solid rgba(14,13,11,.16);font:400 13px/1.3 var(--mono)}
 .v3-contact__copy a:hover{color:var(--red)}
 .v3-contact__form{background:#fff;padding:clamp(40px,6vw,88px) var(--g)}
+.v3-contact__since{
+  margin:clamp(40px,6vw,88px) 0 0;color:var(--red);
+  font:400 clamp(96px,16vw,260px)/.82 var(--cond);letter-spacing:-.02em;text-align:right;
+}
+.v3-contact__since span{
+  display:block;color:var(--k);
+  font-size:clamp(24px,2.6vw,44px);letter-spacing:.04em;text-transform:uppercase;margin-bottom:.3em;
+}
 .v3-contact__form .rv-form{background:#fff;border-color:rgba(14,13,11,.14)}
 
 .v3-foot{

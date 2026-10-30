@@ -6,6 +6,7 @@ import DevisForm from "@/components/DevisForm";
 import { FootBar, MAIL_ALT, MAIL_MAIN, PHONE } from "@/components/Bands";
 import { LOCALES, isLocale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
+import { pageAlternates } from "@/lib/seo";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -17,7 +18,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const t = getMessages(locale).contact;
-  return { title: t.title, description: t.description };
+  return {
+    title: t.title,
+    description: t.description,
+    alternates: pageAlternates(locale, "/contact"),
+  };
 }
 
 export default async function ContactPage({ params }: Params) {

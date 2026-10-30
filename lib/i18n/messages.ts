@@ -181,7 +181,7 @@ const fr: Messages = {
   home: {
     title: "Rougevif — Vêtement de travail, Casablanca",
     description:
-      "Vêtement de travail coupé, cousu et marqué à Casablanca. Sergé de coton sanforisé 320 g/m², coutures triples, devis chiffré en 48 h, réassort garanti 5 ans.",
+      "Rougevif, votre expert textile au Maroc pour des vêtements professionnels, publicitaires et EPI fiables, durables et personnalisés.",
     ticker:
       "VÊTEMENT DE TRAVAIL · CASABLANCA · SANFORISÉ 320 G/M² · COUTURES TRIPLES · RÉASSORT 5 ANS · ",
     live: "ATELIER OUVERT · CASABLANCA",
@@ -193,7 +193,7 @@ const fr: Messages = {
     ctaQuote: "DEMANDER UN DEVIS",
     ctaWorkshop: "VOIR L’ATELIER",
     stats: [
-      { n: "2014", label: "PREMIÈRE SÉRIE" },
+      { n: "2011", label: "PREMIÈRE SÉRIE" },
       { n: "180", label: "ENTREPRISES ÉQUIPÉES" },
       { n: "48 h", label: "DEVIS CHIFFRÉ" },
       { n: "5 ans", label: "RÉASSORT GARANTI" },
@@ -421,7 +421,7 @@ const en: Messages = {
   home: {
     title: "Rougevif — Workwear, Casablanca",
     description:
-      "Workwear cut, sewn and marked in Casablanca. Sanforised cotton twill 320 gsm, triple stitching, costed quote in 48 hours, five-year resupply guarantee.",
+      "Rougevif, your textile expert in Morocco for reliable, durable and customised workwear, promotional apparel and PPE.",
     ticker:
       "WORKWEAR · CASABLANCA · SANFORISED 320 GSM · TRIPLE STITCHING · 5-YEAR RESUPPLY · ",
     live: "WORKSHOP OPEN · CASABLANCA",
@@ -438,7 +438,7 @@ const en: Messages = {
     ctaQuote: "REQUEST A QUOTE",
     ctaWorkshop: "SEE THE WORKSHOP",
     stats: [
-      { n: "2014", label: "FIRST PRODUCTION RUN" },
+      { n: "2011", label: "FIRST PRODUCTION RUN" },
       { n: "180", label: "COMPANIES KITTED OUT" },
       { n: "48 h", label: "COSTED QUOTE" },
       { n: "5 years", label: "RESUPPLY GUARANTEED" },
