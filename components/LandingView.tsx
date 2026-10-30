@@ -47,12 +47,12 @@ export default function LandingView({
             </div>
           </div>
 
-          <figure className="rv-split__media">
+          <figure className="rv-split__media rv-split__media--product">
             <Image
               src={t.heroSrc}
               alt={t.heroAlt}
-              width={350}
-              height={390}
+              width={800}
+              height={800}
               priority
               sizes="(max-width: 700px) 100vw, 50vw"
             />
